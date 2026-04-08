@@ -1,14 +1,5 @@
 package org.sampletask.tddpractice.productorderservice.product
 
-import org.springframework.stereotype.Repository
+import org.springframework.data.jpa.repository.JpaRepository
 
-@Repository
-class ProductRepository {
-    private val persistence: MutableMap<Long, Product> = mutableMapOf()
-    private var sequence: Long = 0L
-
-    fun save(product: Product) {
-        product.assignId(++sequence)
-        persistence[product.id] = product
-    }
-}
+interface ProductRepository : JpaRepository<Product, Long>
