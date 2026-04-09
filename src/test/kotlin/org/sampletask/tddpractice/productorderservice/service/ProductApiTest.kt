@@ -18,7 +18,7 @@ class ProductApiTest : ApiTest() {
     private lateinit var productService: ProductService
 
     @Test
-    fun 상품등록() {
+    fun `상품등록`() {
         val request: AddProductRequest = 상품등록요청_생성()
 
         // API 요청
@@ -28,7 +28,7 @@ class ProductApiTest : ApiTest() {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value())
     }
 
-    private fun `상품등록요청`(request: AddProductRequest): ExtractableResponse<Response> =
+    public fun `상품등록요청`(request: AddProductRequest): ExtractableResponse<Response> =
         RestAssured
             .given()
             .log()
@@ -42,7 +42,7 @@ class ProductApiTest : ApiTest() {
             .all()
             .extract()
 
-    private fun 상품등록요청_생성(): AddProductRequest {
+    public fun `상품등록요청_생성`(): AddProductRequest {
         val productName = "상품명"
         val productPrice = 1000
         val productDiscountPolicy = DiscountPolicy.NONE
