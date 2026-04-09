@@ -27,4 +27,25 @@ class ProductApiTest : ProductSteps() {
 
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value())
     }
+
+    @Test
+    fun `상품조회`() {
+        ProductSteps.상품등록요청(ProductSteps.상품등록요청_생성())
+        val productId: Long = 1L
+
+        val response: ExtractableResponse<Response> =
+            RestAssured
+                .given()
+                .log()
+                .all()
+                .`when`()
+                .get("/products/{productId}", productId)
+                .then()
+                .log()
+                .all()
+                .extract()
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
+        assertThat(response.jsonPath().getString("name")).isEqualTo("상품명")
+    }
 }
