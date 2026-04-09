@@ -27,4 +27,14 @@ class ProductService(
         productPort.save(product)
         return ResponseEntity.status(HttpStatus.CREATED).build()
     }
+
+    fun getProduct(productId: Long): GetProductResponse {
+        val product = productPort.getProduct(productId)
+        return GetProductResponse(
+            product.id,
+            product.name,
+            product.price,
+            product.discountPolicy,
+        )
+    }
 }
