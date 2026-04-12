@@ -26,8 +26,16 @@ open class ProductSteps : ApiTest() {
             val productName = "상품명"
             val productPrice = 1000
             val productDiscountPolicy = DiscountPolicy.NONE
-            val request: AddProductRequest = AddProductRequest(productName, productPrice, productDiscountPolicy)
+            val request = AddProductRequest(productName, productPrice, productDiscountPolicy)
+            return request
+        }
+
+        fun `상품수정요청_생성`(): UpdateProductRequest {
+            val changedProductName = "상품 수정"
+            val changedProductPrice = 2000
+            val request = UpdateProductRequest(changedProductName, changedProductPrice, DiscountPolicy.NONE)
             return request
         }
     }
 }
+

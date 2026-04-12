@@ -3,9 +3,7 @@ package org.sampletask.tddpractice.productorderservice.product
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito
-import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
@@ -26,21 +24,18 @@ class ProductServiceTest {
     @Test
     fun `상품수정`(){
         productService.addProduct(ProductSteps.상품등록요청_생성())
-        val changedName = "상품 수정"
-        val changedPrice = 2000
-
         val productId = 1L
-        val request = UpdateProductRequest(changedName, changedPrice, DiscountPolicy.NONE)
+        val request = ProductSteps. `상품수정요청_생성`()
 
         productService.updateProduct(productId, request)
 
         val response = productService.getProduct(productId)
         val productResponse: GetProductResponse = response.body ?: throw IllegalStateException("응답 본문이 없습니다")
-        assertThat(productResponse.name).isEqualTo(changedName)
-        assertThat(productResponse.price).isEqualTo(changedPrice)
+        assertThat(productResponse.name).isEqualTo("상품 수정")
+        assertThat(productResponse.price).isEqualTo(2000)
     }
 
-//    private class StubProductPort : ProductPort {
+    //    private class StubProductPort : ProductPort {
 //        lateinit var getProduct_will_return: Product
 //        override fun save(product: Product) {
 //
