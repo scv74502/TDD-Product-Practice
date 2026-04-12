@@ -6,11 +6,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 
-@ExtendWith(MockitoExtension::class)
-class ProductServiceTest(
-
-) {
+@SpringBootTest
+class ProductServiceTest {
+    @Autowired
+    private lateinit var productPort: ProductPort
+    @Autowired
     private lateinit var productService: ProductService
 
     @BeforeEach
@@ -22,19 +25,19 @@ class ProductServiceTest(
 
     @Test
     fun `상품수정`(){
+        productService.addProduct(ProductSteps.상품등록요청_생성())
         val changedName = "상품 수정"
         val changedPrice = 2000
 
         val productId = 1L
-        val request: UpdateProductRequest = UpdateProductRequest(changedName, changedPrice, DiscountPolicy.NONE)
-        val product = Product("상품명", 1000, DiscountPolicy.NONE)
-
-        productPort.getProduct_will_return = product
+        val request = UpdateProductRequest(changedName, changedPrice, DiscountPolicy.NONE)
 
         productService.updateProduct(productId, request)
 
-        assertThat(product.name).isEqualTo(changedName)
-        assertThat(product.price).isEqualTo(changedPrice)
+        val response = productService.getProduct(productId)
+        val productResponse: GetProductResponse = response.body ?: throw IllegalStateException("응답 본문이 없습니다")
+        assertThat(productResponse.name).isEqualTo(changedName)
+        assertThat(productResponse.price).isEqualTo(changedPrice)
     }
 
 //    private class StubProductPort : ProductPort {
