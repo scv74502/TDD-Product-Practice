@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 
-class ProductApiTest : ProductSteps() {
+class ProductApiTestProductApiTest : ProductSteps() {
     @Autowired
     private lateinit var productService: ProductService
 
@@ -25,22 +25,23 @@ class ProductApiTest : ProductSteps() {
 
     @Test
     fun `상품조회`() {
-        상품등록요청(상품등록요청_생성())
+        ProductSteps.상품등록요청((ProductSteps.상품등록요청_생성()))
         val productId: Long = 1L
-
         val response: ExtractableResponse<Response> =
-            RestAssured
-                .given()
-                .log()
-                .all()
-                .`when`()
-                .get("/products/{productId}", productId)
-                .then()
-                .log()
-                .all()
-                .extract()
+            `상품조회요청`(productId)
 
         Assertions.assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
         Assertions.assertThat(response.jsonPath().getString("name")).isEqualTo("상품명")
     }
+
+    public fun `상품조회요청`(productId: Long): ExtractableResponse<Response> = RestAssured
+        .given()
+        .log()
+        .all()
+        .`when`()
+        .get("/products/{productId}", productId)
+        .then()
+        .log()
+        .all()
+        .extract()
 }
