@@ -1,0 +1,10 @@
+package org.sampletask.tddpractice.productorderservice.order
+
+data class CreateOrderRequest(
+    val productId: Long,
+    val quantity: Int
+) {
+    init {
+        require(quantity > 0) { "수량은 0보다 커야 합니다." }
+    }
+}
