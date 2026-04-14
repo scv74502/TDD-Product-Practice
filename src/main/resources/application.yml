@@ -2,6 +2,8 @@ spring:
   application:
     name: tdd-practice
   jpa:
+    hibernate:
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
