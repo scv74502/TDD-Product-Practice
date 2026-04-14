@@ -1,7 +1,9 @@
 package org.sampletask.tddpractice.productorderservice.order
 
 import org.sampletask.tddpractice.productorderservice.product.Product
+import org.springframework.stereotype.Component
 
+@Component
 class OrderService(
     val orderPort: OrderPort
 ) {

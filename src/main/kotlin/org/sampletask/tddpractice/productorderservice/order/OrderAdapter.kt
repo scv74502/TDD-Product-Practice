@@ -3,7 +3,9 @@ package org.sampletask.tddpractice.productorderservice.order
 import org.sampletask.tddpractice.productorderservice.product.Product
 import org.sampletask.tddpractice.productorderservice.product.ProductRepository
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Component
 
+@Component
 class OrderAdapter(
     val productRepository: ProductRepository,
     val orderRepository: OrderRepository
