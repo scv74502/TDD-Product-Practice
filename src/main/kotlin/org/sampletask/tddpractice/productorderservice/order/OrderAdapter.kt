@@ -8,12 +8,11 @@ import org.springframework.stereotype.Component
 @Component
 class OrderAdapter(
     val productRepository: ProductRepository,
-    val orderRepository: OrderRepository
-):OrderPort {
-    override fun getProductById(productId: Long): Product {
-        return productRepository.findByIdOrNull(productId)
+    val orderRepository: OrderRepository,
+) : OrderPort {
+    override fun getProductById(productId: Long): Product =
+        productRepository.findByIdOrNull(productId)
             ?: throw NoSuchElementException("상품이 존재하지 않습니다")
-    }
 
     override fun save(order: Order) {
         orderRepository.save(order)

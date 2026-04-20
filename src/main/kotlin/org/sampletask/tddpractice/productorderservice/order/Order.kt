@@ -4,7 +4,6 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToOne
 import jakarta.persistence.Table
 import org.sampletask.tddpractice.productorderservice.product.Product
@@ -14,7 +13,7 @@ import org.sampletask.tddpractice.productorderservice.product.Product
 class Order(
     @OneToOne
     val product: Product,
-    val quantity: Int
+    val quantity: Int,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

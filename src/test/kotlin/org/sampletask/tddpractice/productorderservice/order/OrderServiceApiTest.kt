@@ -8,7 +8,6 @@ import org.sampletask.tddpractice.ApiTest
 import org.sampletask.tddpractice.productorderservice.product.ProductSteps
 import org.springframework.http.HttpStatus
 
-
 class OrderServiceApiTest : ApiTest() {
     @Test
     fun `상품주문`() {
@@ -20,5 +19,4 @@ class OrderServiceApiTest : ApiTest() {
 
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value())
     }
-
 }

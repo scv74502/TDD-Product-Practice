@@ -4,6 +4,7 @@ plugins {
     kotlin("plugin.jpa") version "1.9.25"
     id("org.springframework.boot") version "3.5.14-SNAPSHOT"
     id("io.spring.dependency-management") version "1.1.7"
+    id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
 }
 
 group = "org.sampletask"
@@ -39,6 +40,22 @@ kotlin {
     }
 }
 
+ktlint {
+    version.set("1.3.1")
+    verbose.set(true)
+    outputToConsole.set(true)
+    ignoreFailures.set(false)
+    enableExperimentalRules.set(false)
+    filter {
+        exclude("**/build/**")
+        exclude("**/generated/**")
+    }
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named("check") {
+    dependsOn("ktlintCheck")
 }
