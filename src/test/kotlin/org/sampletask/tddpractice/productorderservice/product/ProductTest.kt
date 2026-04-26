@@ -14,4 +14,25 @@ class ProductTest {
         assertThat(product.name).isEqualTo(changedName)
         assertThat(product.price).isEqualTo(changedPrice)
     }
+
+    @Test
+    fun none_discounted_product() {
+        val product = Product("상품명", 1000, DiscountPolicy.NONE)
+        val discountedPrice = product.getDiscountedPrice()
+        assertThat(discountedPrice).isEqualTo(product.price)
+    }
+
+    @Test
+    fun fix_1000_discounted_product() {
+        val product = Product("상품명", 1000, DiscountPolicy.FIX_1000_DISCOUNT)
+        val discountedPrice = product.getDiscountedPrice()
+        assertThat(discountedPrice).isEqualTo(product.price - 1000)
+    }
+
+    @Test
+    fun over_discounted_product() {
+        val product = Product("상품명", 500, DiscountPolicy.FIX_1000_DISCOUNT)
+        val discountedPrice = product.getDiscountedPrice()
+        assertThat(discountedPrice).isEqualTo(0)
+    }
 }

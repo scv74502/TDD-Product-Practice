@@ -22,4 +22,8 @@ class Order(
     init {
         require(quantity > 0) { "수량은 0보다 커야 합니다." }
     }
+
+    fun getTotalPrice(): Int {
+        return product.getDiscountedPrice() * this.quantity
+    }
 }
