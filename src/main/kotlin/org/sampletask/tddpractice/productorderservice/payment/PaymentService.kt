@@ -1,16 +1,25 @@
 package org.sampletask.tddpractice.productorderservice.payment
 
-import org.springframework.stereotype.Component
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
-@Component
+@RestController
+@RequestMapping("/payments")
 class PaymentService(
     val paymentPort: PaymentPort,
 ) {
-    fun payment(request: PaymentRequest) {
+    @PostMapping
+    fun payment(@RequestBody request: PaymentRequest): ResponseEntity<Void> {
         val order = paymentPort.getOrder(request.orderId)
-        val payment: Payment = Payment(order, request.cardNumber)
+        val payment = Payment(order, request.cardNumber)
 
         paymentPort.pay(payment.getTotalPrice(), payment.cardNumber)
         paymentPort.save(payment)
+
+        return ResponseEntity.status(HttpStatus.OK).build()
     }
 }
