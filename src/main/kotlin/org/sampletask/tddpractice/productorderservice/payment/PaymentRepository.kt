@@ -1,5 +1,8 @@
 package org.sampletask.tddpractice.productorderservice.payment
 
+import org.springframework.stereotype.Repository
+
+@Repository
 class PaymentRepository {
     var persistence: MutableMap<Long, Payment> = mutableMapOf()
     var sequence = 0L

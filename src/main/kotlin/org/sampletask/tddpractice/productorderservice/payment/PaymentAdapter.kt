@@ -3,7 +3,9 @@ package org.sampletask.tddpractice.productorderservice.payment
 import org.sampletask.tddpractice.productorderservice.order.Order
 import org.sampletask.tddpractice.productorderservice.product.DiscountPolicy
 import org.sampletask.tddpractice.productorderservice.product.Product
+import org.springframework.stereotype.Component
 
+@Component
 class PaymentAdapter(
     val paymentGateway: PaymentGateway,
     val paymentRepository: PaymentRepository,
