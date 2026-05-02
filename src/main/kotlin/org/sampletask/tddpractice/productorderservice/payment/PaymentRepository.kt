@@ -1,14 +1,7 @@
 package org.sampletask.tddpractice.productorderservice.payment
 
-import org.springframework.stereotype.Repository
+import org.springframework.data.jpa.repository.JpaRepository
 
-@Repository
-class PaymentRepository {
-    var persistence: MutableMap<Long, Payment> = mutableMapOf()
-    var sequence = 0L
-
-    fun save(payment: Payment) {
-        payment.assignId(++sequence)
-        persistence[payment.id] = payment
-    }
+interface PaymentRepository : JpaRepository<Payment, Long> {
+    fun save(payment: Payment)
 }
