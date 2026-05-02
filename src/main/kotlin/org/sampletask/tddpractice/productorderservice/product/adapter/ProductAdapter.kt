@@ -1,5 +1,7 @@
-package org.sampletask.tddpractice.productorderservice.product
+package org.sampletask.tddpractice.productorderservice.product.adapter
 
+import org.sampletask.tddpractice.productorderservice.product.application.port.ProductPort
+import org.sampletask.tddpractice.productorderservice.product.domain.Product
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 

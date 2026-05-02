@@ -2,6 +2,7 @@ package org.sampletask.tddpractice.productorderservice.product
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.sampletask.tddpractice.productorderservice.product.domain.DiscountPolicy
 
 class DiscountPolicyTest {
     @Test

@@ -4,6 +4,9 @@ import io.restassured.RestAssured
 import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
 import org.sampletask.tddpractice.ApiTest
+import org.sampletask.tddpractice.productorderservice.product.application.service.AddProductRequest
+import org.sampletask.tddpractice.productorderservice.product.application.service.UpdateProductRequest
+import org.sampletask.tddpractice.productorderservice.product.domain.DiscountPolicy
 import org.springframework.http.MediaType
 
 open class ProductSteps : ApiTest() {

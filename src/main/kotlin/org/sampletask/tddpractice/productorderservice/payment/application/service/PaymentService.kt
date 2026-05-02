@@ -1,5 +1,7 @@
-package org.sampletask.tddpractice.productorderservice.payment
+package org.sampletask.tddpractice.productorderservice.payment.application.service
 
+import org.sampletask.tddpractice.productorderservice.payment.application.port.PaymentPort
+import org.sampletask.tddpractice.productorderservice.payment.domain.Payment
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
@@ -15,7 +17,9 @@ class PaymentService(
 ) {
     @PostMapping
     @Transactional
-    fun payment(@RequestBody request: PaymentRequest): ResponseEntity<Void> {
+    fun payment(
+        @RequestBody request: PaymentRequest,
+    ): ResponseEntity<Void> {
         val order = paymentPort.getOrder(request.orderId)
         val payment = Payment(order, request.cardNumber)
 

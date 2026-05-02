@@ -1,4 +1,4 @@
-package org.sampletask.tddpractice.productorderservice.product
+package org.sampletask.tddpractice.productorderservice.product.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -43,7 +43,5 @@ class Product(
         this.discountPolicy = discountPolicy
     }
 
-    fun getDiscountedPrice(): Int {
-        return discountPolicy.applyDiscount(price)
-    }
+    fun getDiscountedPrice(): Int = discountPolicy.applyDiscount(price)
 }

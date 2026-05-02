@@ -3,6 +3,7 @@ package org.sampletask.tddpractice.productorderservice.order
 import io.restassured.RestAssured
 import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
+import org.sampletask.tddpractice.productorderservice.order.application.service.CreateOrderRequest
 import org.springframework.http.MediaType
 
 class OrderSteps {

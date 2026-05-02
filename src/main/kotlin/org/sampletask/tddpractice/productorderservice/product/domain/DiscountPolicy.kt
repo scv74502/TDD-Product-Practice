@@ -1,4 +1,4 @@
-package org.sampletask.tddpractice.productorderservice.product
+package org.sampletask.tddpractice.productorderservice.product.domain
 
 import kotlin.math.max
 

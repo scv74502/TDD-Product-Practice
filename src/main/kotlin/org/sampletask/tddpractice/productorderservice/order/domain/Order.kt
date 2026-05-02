@@ -1,4 +1,4 @@
-package org.sampletask.tddpractice.productorderservice.order
+package org.sampletask.tddpractice.productorderservice.order.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.OneToOne
 import jakarta.persistence.Table
-import org.sampletask.tddpractice.productorderservice.product.Product
+import org.sampletask.tddpractice.productorderservice.product.domain.Product
 
 @Entity
 @Table(name = "orders")
@@ -23,7 +23,5 @@ class Order(
         require(quantity > 0) { "수량은 0보다 커야 합니다." }
     }
 
-    fun getTotalPrice(): Int {
-        return product.getDiscountedPrice() * this.quantity
-    }
+    fun getTotalPrice(): Int = product.getDiscountedPrice() * this.quantity
 }

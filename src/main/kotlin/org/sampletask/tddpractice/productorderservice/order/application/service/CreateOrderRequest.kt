@@ -1,4 +1,4 @@
-package org.sampletask.tddpractice.productorderservice.order
+package org.sampletask.tddpractice.productorderservice.order.application.service
 
 data class CreateOrderRequest(
     val productId: Long,

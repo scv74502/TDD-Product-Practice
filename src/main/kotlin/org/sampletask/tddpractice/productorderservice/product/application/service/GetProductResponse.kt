@@ -1,5 +1,6 @@
-package org.sampletask.tddpractice.productorderservice.product
+package org.sampletask.tddpractice.productorderservice.product.application.service
 
+import org.sampletask.tddpractice.productorderservice.product.domain.DiscountPolicy
 import org.springframework.util.Assert
 
 data class GetProductResponse(

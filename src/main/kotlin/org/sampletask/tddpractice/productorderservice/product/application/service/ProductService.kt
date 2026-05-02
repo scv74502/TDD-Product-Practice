@@ -1,5 +1,7 @@
-package org.sampletask.tddpractice.productorderservice.product
+package org.sampletask.tddpractice.productorderservice.product.application.service
 
+import org.sampletask.tddpractice.productorderservice.product.application.port.ProductPort
+import org.sampletask.tddpractice.productorderservice.product.domain.Product
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional

@@ -5,6 +5,9 @@ import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.sampletask.tddpractice.productorderservice.product.adapter.ProductRepository
+import org.sampletask.tddpractice.productorderservice.product.application.service.AddProductRequest
+import org.sampletask.tddpractice.productorderservice.product.application.service.ProductService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType

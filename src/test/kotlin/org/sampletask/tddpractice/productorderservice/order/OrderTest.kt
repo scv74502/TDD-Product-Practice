@@ -1,8 +1,9 @@
 package org.sampletask.tddpractice.productorderservice.order
 
 import org.assertj.core.api.Assertions.assertThat
-import org.sampletask.tddpractice.productorderservice.product.DiscountPolicy
-import org.sampletask.tddpractice.productorderservice.product.Product
+import org.sampletask.tddpractice.productorderservice.order.domain.Order
+import org.sampletask.tddpractice.productorderservice.product.domain.DiscountPolicy
+import org.sampletask.tddpractice.productorderservice.product.domain.Product
 import kotlin.test.Test
 
 class OrderTest {
